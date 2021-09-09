@@ -4,10 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(SurfaceSlider))]
 public class PhysicsMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private SurfaceSlider _surfaceSlider;
+    [SerializeField] private float _speed = 8f;
 
-    [SerializeField] private float _speed;
+    private Rigidbody _rigidbody;
+    private SurfaceSlider _surfaceSlider;
+
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _surfaceSlider = GetComponent<SurfaceSlider>();
+    }
 
     public void Move(Vector3 direction)
     {
