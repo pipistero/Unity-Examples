@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(SurfaceSlider))]
 public class PhysicsMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
