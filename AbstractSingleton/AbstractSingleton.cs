@@ -3,17 +3,19 @@ using UnityEngine;
 public abstract class AbstractSingleton<T> : MonoBehaviour where T : AbstractSingleton<T>
 {
     protected static T _instance;
-    
-    public static T Instance
+    public static T Instance => _instance;
+
+    public void Awake()
     {
-        get
+        if (_instance == null)
         {
-            if (!_instance)
-            {
-                _instance = FindObjectOfType<T>();
-            }
+            _instance = FindObjectOfType<T>();
             
-            return _instance;
+            DontDestroyOnLoad(this);
+            
+            return;
         }
+        
+        Destroy(gameObject);
     }
 }
