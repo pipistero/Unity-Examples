@@ -14,8 +14,7 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 offsetTargetPosition = _target.position + _offset;
-        Vector3 newCameraPosition = Vector3.Lerp(transform.position, offsetTargetPosition, (_timeToReachTarget * Time.fixedDeltaTime));
 
-        transform.position = newCameraPosition;
+        transform.position = Vector3.Lerp(transform.position, offsetTargetPosition, (_timeToReachTarget * Time.fixedDeltaTime));
     }
 }
