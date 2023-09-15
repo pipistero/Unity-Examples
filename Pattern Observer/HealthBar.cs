@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    [Header("Player")]
     [SerializeField] private Player _player;
 
     private void OnEnable()
     {
-        _player.OnHealthUpdated += PrintUpdatedHealth;
+        _player.HealthUpdated += OnHealthUpdated;
     }
 
     private void OnDisable()
     {
-        _player.OnHealthUpdated -= PrintUpdatedHealth;
+        _player.HealthUpdated -= OnHealthUpdated;
     }
 
-    private void PrintUpdatedHealth(int health)
+    private void OnHealthUpdated(int health)
     {
-        if (_player == null)
-            return;
+        DebugHealth(health);
+    }
 
-        Debug.Log($"Updated health is {health}");
+    private void DebugHealth(int currentHealth)
+    {
+        Debug.Log($"Current health is {currentHealth}");
     }
 }

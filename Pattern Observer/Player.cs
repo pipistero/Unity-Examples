@@ -3,9 +3,10 @@ using System;
 
 public class Player : MonoBehaviour
 {
+    [Header("Health")]
     [SerializeField] private int _health = 10;
 
-    public event Action<int> OnHealthUpdated;
+    public event Action<int> HealthUpdated;
 
     public void DealDamage(int value)
     {
@@ -14,7 +15,6 @@ public class Player : MonoBehaviour
 
         _health -= value;
 
-        if (OnHealthUpdated != null)
-            OnHealthUpdated.Invoke(_health);
+        HealthUpdated?.Invoke(_health);
     }
 }
